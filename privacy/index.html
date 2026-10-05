@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — KEEP?</title>
+  <meta name="description" content="How KEEP? handles purchase, receipt, email, notification and diagnostic information.">
+  <link rel="canonical" href="https://keepapp.io/privacy/">
+  <meta name="theme-color" content="#FAF8F5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../assets/icon.png"><link rel="stylesheet" href="../assets/keep.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap nav-row"><a class="wordmark" href="../" aria-label="KEEP? home">KEEP?</a><nav aria-label="Primary"><a aria-current="page" href="./">Privacy</a><a href="../terms/">Terms</a><a href="../support/">Support</a></nav></div></header>
+<main class="doc" id="main"><div class="wrap narrow">
+  <a class="back" href="../">&larr; Home</a><h1>Privacy Policy</h1>
+  <p class="updated"><strong>Owner-approved private-alpha policy; not attorney-reviewed.</strong> Effective date: October 5, 2026.</p>
+  <div class="summary"><p><strong>In brief.</strong> KEEP? stores your saved purchases, decisions and attached images on your iPhone. Optional network features send the information described below to KEEP?&rsquo;s service to parse content, collect relevant emails, deliver inbox results, measure a small activation funnel and support notifications. KEEP? does not sell personal information or use it for advertising.</p></div>
+
+  <h2>Information stored on your iPhone</h2>
+  <p>KEEP? stores the purchases you save, including item and retailer details, prices, dates, return and refund status, order or tracking identifiers, notes and images you attach. It also stores app settings, pending imports and feature credentials in app storage or the iOS Keychain. Apple may include app data in device backups according to your Apple backup settings.</p>
+  <p>Manual entry, paper-receipt scanning and text recognition from screenshots run on the device. A photo you select through Apple&rsquo;s photo picker remains in app storage unless it is part of content you deliberately submit for server parsing.</p>
+
+  <h2 id="gmail">Gmail read-only access</h2>
+  <p>If you choose to connect Gmail, KEEP? requests exactly this Google OAuth scope:</p>
+  <p><code>https://www.googleapis.com/auth/gmail.readonly</code></p>
+  <p>This permission lets KEEP? view Gmail messages and related metadata. KEEP? uses it to examine message history, first inspect message metadata and then retrieve the content of messages that appear relevant to orders, shipping, delivery, cancellations, returns or refunds.</p>
+  <p>KEEP? does <strong>not</strong> request permission to send email, create or change drafts, delete email, modify labels, change settings or mark messages as read. Gmail information is used only to provide and secure the email-import feature. KEEP?&rsquo;s use and transfer of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+  <p>The service stores an encrypted Gmail refresh credential, an encrypted link to the owner&rsquo;s KEEP? inbox, a one-way fingerprint of the connected address, Gmail history position and connection health. These remain until Gmail is disconnected. A failed revocation can leave an encrypted revocation record queued until revocation succeeds.</p>
+
+  <h2>Email forwarding</h2>
+  <p>Instead of connecting Gmail, you may configure your email provider to forward selected messages to a unique KEEP? address. The inbound provider receives the forwarded message and sends it to KEEP?&rsquo;s service. Your email provider controls the forwarding rule; turning off KEEP? does not itself delete that rule.</p>
+  <p>KEEP? may extract retailer and item details, prices, currency, order and tracking identifiers, purchase, shipping, delivery, cancellation, return and refund information, and forwarding-verification details. Forwarded messages can contain your name, email or shipping address and limited payment information included by the retailer.</p>
+
+  <h2>Receipt and email processing</h2>
+  <p>When you submit shared content for parsing, or when a relevant Gmail or forwarded message is processed, KEEP? sends the content needed for that parsing request to its service. This can include the full relevant message and its markup, receipt text, image or PDF because filtering it first could remove order details. Some candidate Gmail and forwarded-message content is transferred to Anthropic&rsquo;s Claude API as a service provider solely to extract structured purchase or lifecycle information for the user-facing import feature. Deterministic rules handle other messages without model processing where possible.</p>
+  <p>The raw parsing request is not saved as a receipt archive by KEEP?&rsquo;s parse endpoint. Anthropic controls its own API processing and retention under the applicable commercial terms and account settings. Anthropic&rsquo;s published standard API policy says inputs and outputs are automatically deleted within 30 days, subject to stated exceptions such as a different agreement, usage-policy enforcement or legal requirements. KEEP? could not confirm an account-specific shorter-retention setting without entering the provider account, so this policy does not promise one. The service can retain structured records derived from messages:</p>
+  <ul>
+    <li>Extracted inbox items, including subject and purchase, return, refund or verification information, wait until acknowledged by the app. They have a 14-day freshness window and are removed when cleanup runs.</li>
+    <li>Owner-scoped review evidence can include retailer, item, amount, identifiers and short message excerpts. It is encrypted and has a 30-day expiry.</li>
+    <li>A rolling diagnostic journal keeps at most 100 recent service entries. It can contain sender information, subjects, excerpts, extracted lines or identifiers and is count-limited rather than age-limited.</li>
+  </ul>
+
+  <h2>Notifications and device identifiers</h2>
+  <p>KEEP? schedules return and refund reminders locally on your device. When remote notifications are enabled, the service stores an Apple Push Notification service device token associated with the owner-scoped inbox so it can notify that installation. Device tokens can rotate. The app requests removal when notifications are unregistered or an inbox is reset, but offline or failed cleanup can leave a token until Apple invalidates it or it is removed operationally. The current registry has no automatic age-based expiry.</p>
+  <p>The app also creates random, separate installation identifiers for limited purposes. A parse-installation credential authorizes only receipt parsing and is not an administrator credential. A different random identifier is used for the first-party activation events described below.</p>
+
+  <h2>First-party activation measurement</h2>
+  <p>KEEP? records a small set of onboarding and activation events on its own service. Each record contains a random installation identifier, an approved event name, a server timestamp and limited enumerated choices. It does not accept receipt text, product names, retailers, prices, order numbers, email addresses, inbox aliases or forwarding secrets. Records older than 90 days are removed when another activation event is written and may remain longer if no new event triggers cleanup.</p>
+
+  <h2>Logs, diagnostics and security</h2>
+  <p>Operational logs record request shape, timing, result and cost information needed to run and protect the service. Receipt contents are excluded by default; merchant names and redacted or truncated identifiers may appear. A development-only debug setting can include a short failed-parse excerpt and is intended to remain disabled in production. Fly.io controls its platform-level operational logs. KEEP? could not confirm a provider-specific retention period without entering the provider account and therefore does not promise a fixed period for those logs.</p>
+  <p>Authorized operators can access administrative diagnostics, including the count-limited journal&rsquo;s subjects or excerpts, only when reasonably needed for user-requested support, security, abuse prevention or service diagnosis. Google user data is not used for advertising, credit decisions or unrelated profiling, and human access is limited to the exceptions permitted by Google&rsquo;s Limited Use requirements.</p>
+  <p>Network traffic uses HTTPS. Owner data and administrative operations use separate credentials and access controls. Gmail refresh credentials and inbox links, and owner-scoped review evidence, are encrypted at rest by the application. Derived pending-inbox and diagnostic-journal files are stored with restricted file permissions but are not field-encrypted. Gmail history position, connection health and the one-way email fingerprint are also not encrypted fields. These controls reduce risk but no system can promise absolute security.</p>
+
+  <h2>Service providers</h2>
+  <ul>
+    <li><strong>Anthropic</strong> provides model processing for eligible receipt and email parsing.</li>
+    <li><strong>Postmark</strong> receives and delivers messages sent to KEEP? forwarding addresses.</li>
+    <li><strong>Fly.io</strong> hosts KEEP?&rsquo;s application service and its operational logs.</li>
+    <li><strong>GitHub Pages</strong> is the proposed host for this static public website and may process standard web-request information under GitHub&rsquo;s terms.</li>
+    <li><strong>Google</strong> provides Gmail and OAuth when you connect Gmail.</li>
+    <li><strong>Apple</strong> provides the iOS platform, App Store and optional push-notification delivery and device backups.</li>
+  </ul>
+  <p>KEEP? does not use advertising networks or third-party analytics SDKs. This website has no analytics, advertising trackers, cookies or third-party scripts.</p>
+
+  <h2>Retention and deletion</h2>
+  <p>Deleting a purchase removes its app record and related local reminders. Resetting a forwarding inbox requests removal of its pending inbox records and alias registration. Because this cleanup is a network request, offline or failed cleanup can leave those records until their freshness window or operational cleanup applies. Push registration, review evidence and diagnostic records have separate deletion or retention paths: the app requests removal of push destinations when it unregisters them; review evidence expires after 30 days or can be removed item by item; and the diagnostic journal remains subject to its 100-entry count limit. Activation records use the 90-day on-write cleanup described above.</p>
+  <p>Deleting the app removes its app container but may not remove Keychain values, Apple-controlled backups, previously forwarded mail, the forwarding rule in your email account or all server-side diagnostic and activation records. KEEP? does not currently offer a general account portal because the app does not use a conventional user account.</p>
+
+  <h2>Disconnecting Gmail</h2>
+  <p>You can disconnect Gmail from KEEP?. The service removes the active grant and attempts to revoke it with Google. You can also revoke KEEP? directly from your Google Account&rsquo;s third-party access settings. Disconnecting Gmail does not delete purchases already saved on your phone or derived inbox, review and diagnostic records already subject to the retention rules above.</p>
+
+  <h2>Your choices and rights</h2>
+  <p>You can use KEEP? manually without Gmail or email forwarding, decline notifications, delete local purchases, reset a forwarding inbox and disconnect Gmail. Depending on where you live, privacy law may provide additional access, correction or deletion rights. Contact KEEP? using the address below; the operator may need limited information to verify and locate an owner-scoped record.</p>
+
+  <h2>Age requirement</h2><p>KEEP? is intended only for people who are at least 18 years old.</p>
+  <h2>Changes to this policy</h2><p>This policy may change as KEEP? changes. A revised policy will identify a new effective date. Material changes will be communicated through an appropriate product or release notice when required.</p>
+  <h2>Contact</h2><p>KEEP? is provided by <strong>ZENDELI CO.</strong> For privacy or support questions, contact <a href="mailto:support@keepapp.io">support@keepapp.io</a>.</p>
+</div></main>
+<footer class="site-foot"><div class="wrap foot-row"><a href="../">Home</a><a href="../terms/">Terms</a><a href="../support/">Support</a><span class="spacer"></span><span>&copy; 2026 ZENDELI CO.</span></div></footer>
+</body>
+</html>

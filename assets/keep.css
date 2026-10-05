@@ -1,0 +1,507 @@
+/* KEEP? — site styles.
+   Colors and type follow KEEP/Design/Theme.swift; the light web text tones are
+   slightly darker to meet WCAG contrast. No web fonts: on iPhone this renders in the same SF
+   and New York faces the app uses, and it costs zero requests. */
+
+:root {
+  --paper:      #FAF8F5;
+  --surface:    #FFFFFF;
+  --ink:        #1A1714;
+  --ink-2:      #756D65;
+  --hairline:   #E9E4DD;
+  --clay:       #A3533B;
+  --urgent:     #B33A28;
+  --sage:       #4F6F5A;
+  --clay-soft:   rgba(176, 95, 69, 0.12);
+  --urgent-soft: rgba(179, 58, 40, 0.12);
+
+  --display: ui-serif, "New York", Georgia, "Times New Roman", serif;
+  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --gap: clamp(64px, 9vw, 104px);
+  --pad: clamp(22px, 5vw, 32px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:    #121110;
+    --surface:  #1E1C1A;
+    --ink:      #F5F2EE;
+    --ink-2:    #9A918A;
+    --hairline: #2E2B28;
+    --clay:     #D1836A;
+    --urgent:   #E07A64;
+    --sage:     #7FA98C;
+    --clay-soft:   rgba(209, 131, 106, 0.16);
+    --urgent-soft: rgba(224, 122, 100, 0.16);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--clay); }
+
+.skip-link {
+  position: fixed;
+  z-index: 10;
+  top: 8px;
+  left: 8px;
+  transform: translateY(-160%);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+a:focus-visible,
+.cta:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+.narrow { max-width: 660px; }
+
+/* Left-aligned narrow column, for use inside a full-width .wrap. */
+.col { max-width: 660px; }
+
+/* ---------- type ---------- */
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+h1 { font-size: clamp(38px, 6.4vw, 62px); line-height: 1.05; }
+h2 { font-size: clamp(27px, 4vw, 38px); line-height: 1.15; }
+h3 { font-size: 21px; line-height: 1.25; }
+
+p { margin: 0 0 18px; }
+p:last-child { margin-bottom: 0; }
+
+.lede {
+  font-size: clamp(18px, 2.3vw, 20px);
+  color: var(--ink-2);
+  max-width: 46ch;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin: 0 0 20px;
+}
+
+/* ---------- header ---------- */
+
+.site-head {
+  padding: 28px 0;
+}
+
+.wordmark {
+  font-family: var(--display);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-row { display: flex; align-items: center; gap: 24px; }
+.nav-row nav { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-left: auto; font-size: 15px; }
+.nav-row nav a { color: var(--ink-2); text-underline-offset: 4px; }
+.nav-row nav a:hover,
+.nav-row nav a[aria-current="page"] { color: var(--ink); }
+
+.availability {
+  display: inline-block;
+  color: var(--sage);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 14px;
+}
+
+/* ---------- call to action ---------- */
+
+.cta {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 14px;
+}
+
+.cta:hover { opacity: 0.88; }
+
+.cta-note {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(32px, 6vw, 72px);
+  align-items: center;
+  padding: clamp(24px, 5vw, 56px) 0 var(--gap);
+}
+
+.hero h1 { margin-bottom: 22px; }
+.hero .lede { margin-bottom: 30px; }
+
+/* ---------- sections ---------- */
+
+section { padding-bottom: var(--gap); }
+
+.pull {
+  font-family: var(--display);
+  font-size: clamp(24px, 3.6vw, 34px);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  max-width: 26ch;
+  margin: 0;
+}
+
+.pull span { color: var(--ink-2); }
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 2px;
+  margin-top: 34px;
+  border-top: 1px solid var(--hairline);
+}
+
+.step {
+  padding: 26px 26px 26px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.step .n {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--clay);
+  display: block;
+  margin-bottom: 14px;
+}
+
+.step h3 { margin-bottom: 8px; }
+.step p { font-size: 15.5px; color: var(--ink-2); }
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(32px, 6vw, 72px);
+  align-items: center;
+}
+
+.section-head { margin-bottom: 20px; }
+
+.fact-card {
+  width: min(100%, 350px);
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 22px;
+}
+
+.fact-card p { padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--hairline); }
+.fact-card p:last-child { padding-bottom: 0; border-bottom: 0; }
+.fact-card strong, .fact-card span { display: block; }
+.fact-card span { color: var(--ink-2); font-size: 14px; margin-top: 3px; }
+
+/* ---------- closing ---------- */
+
+.close {
+  border-top: 1px solid var(--hairline);
+  padding-top: var(--gap);
+  text-align: center;
+}
+
+.close h2 { margin-bottom: 26px; }
+.close p { max-width: 62ch; margin-inline: auto; color: var(--ink-2); }
+
+/* ---------- footer ---------- */
+
+.site-foot {
+  border-top: 1px solid var(--hairline);
+  padding: 26px 0 48px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.foot-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  align-items: center;
+}
+
+.site-foot a { color: var(--ink-2); text-decoration-color: var(--hairline); }
+.site-foot a:hover { color: var(--clay); }
+.foot-row .spacer { flex: 1; }
+
+/* ---------- device mock ----------
+   A rendering of the real home screen, built from the same tokens as the app.
+   Replace with a real screenshot when you have one — see docs/README.md. */
+
+.device {
+  width: 264px;
+  flex: none;
+  border: 9px solid #1A1714;
+  border-radius: 46px;
+  background: var(--paper);
+  padding: 18px 15px 22px;
+  box-shadow: 0 26px 60px rgba(26, 23, 20, 0.16);
+  overflow: hidden;
+  user-select: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .device {
+    border-color: #3A3633;
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.device .mark {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  margin: 0 0 26px;
+}
+
+.device .amount {
+  font-family: var(--display);
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.device .returnable {
+  font-family: var(--display);
+  font-size: 19px;
+  color: var(--ink-2);
+  margin: 2px 0 0;
+}
+
+.device .count {
+  font-size: 11px;
+  color: var(--ink-2);
+  margin: 10px 0 26px;
+}
+
+.device .label {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--ink-2);
+  margin: 0 0 10px;
+}
+
+.device .row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 15px;
+  padding: 12px;
+  margin-bottom: 9px;
+}
+
+.device .swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--hairline);
+  flex: none;
+}
+
+.device .item { flex: 1; min-width: 0; }
+
+.device .item b {
+  display: block;
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.device .item span {
+  font-size: 10.5px;
+  color: var(--ink-2);
+}
+
+.device .pill {
+  font-size: 9.5px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 999px;
+  flex: none;
+  color: var(--clay);
+  background: var(--clay-soft);
+}
+
+.device .pill.soon {
+  color: var(--urgent);
+  background: var(--urgent-soft);
+}
+
+.device .btn {
+  margin-top: 20px;
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+/* ---------- lock screen notification mock ---------- */
+
+.lock {
+  width: 300px;
+  flex: none;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 20px;
+  padding: 14px 16px;
+  box-shadow: 0 14px 40px rgba(26, 23, 20, 0.10);
+}
+
+@media (prefers-color-scheme: dark) {
+  .lock { box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45); }
+}
+
+.lock .top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 8px;
+}
+
+.lock img {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  display: block;
+}
+
+.lock .app {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  flex: 1;
+}
+
+.lock .when { font-size: 11px; color: var(--ink-2); }
+.lock .title { font-size: 15px; font-weight: 600; margin: 0 0 2px; }
+.lock .msg { font-size: 14px; color: var(--ink-2); margin: 0; }
+
+/* ---------- document pages (privacy, support) ---------- */
+
+.doc { padding: clamp(16px, 4vw, 40px) 0 var(--gap); }
+.doc h1 { font-size: clamp(32px, 5vw, 44px); margin-bottom: 10px; }
+
+.doc .updated {
+  font-size: 14px;
+  color: var(--ink-2);
+  margin: 0 0 44px;
+}
+
+.doc h2 {
+  font-size: 22px;
+  margin: 44px 0 12px;
+}
+
+.doc p, .doc li { font-size: 16.5px; }
+.doc code { overflow-wrap: anywhere; }
+.doc ul { padding-left: 22px; margin: 0 0 18px; }
+.doc li { margin-bottom: 6px; }
+
+.doc .summary {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--sage);
+  border-radius: 4px;
+  padding: 22px 24px;
+  margin-bottom: 8px;
+}
+
+.back {
+  display: inline-block;
+  font-size: 14px;
+  color: var(--ink-2);
+  text-decoration: none;
+  margin-bottom: 30px;
+}
+
+.back:hover { color: var(--clay); }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 760px) {
+  .hero,
+  .split {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .hero { padding-top: 8px; }
+
+  .device, .lock { margin-top: 8px; }
+
+  .step { padding-right: 0; }
+  .nav-row { align-items: flex-start; }
+  .nav-row nav { gap: 8px 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
