@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>KEEP? — Purchase, return and refund organization</title>
-  <meta name="description" content="KEEP? helps private-beta iPhone users organize purchases, return decisions and refunds from receipts and lifecycle emails.">
+  <title>KEEP? — The after-shopping app</title>
+  <meta name="description" content="KEEP? is the after-shopping app for purchase decisions, return windows and refunds. Request early access to the private iPhone beta.">
   <link rel="canonical" href="https://keepapp.io/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="KEEP? — Purchase, return and refund organization">
-  <meta property="og:description" content="Keep purchase decisions, return windows and expected refunds in one calm place.">
+  <meta property="og:title" content="KEEP? — The after-shopping app">
+  <meta property="og:description" content="The shopping was the easy part. KEEP? helps with what comes after.">
   <meta property="og:url" content="https://keepapp.io/">
   <meta property="og:image" content="https://keepapp.io/assets/icon.png">
-  <meta name="theme-color" content="#FAF8F5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#F7F3ED" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
-  <link rel="icon" href="assets/icon.png">
-  <link rel="apple-touch-icon" href="assets/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32-v2.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon-v2.png">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="assets/keep.css">
 </head>
 <body>
@@ -30,34 +31,49 @@
     <div class="hero">
       <div>
         <p class="eyebrow">Private iPhone beta</p>
-        <h1>Keep the purchase. Track the return. Notice the refund.</h1>
-        <p class="lede">KEEP? organizes what you bought, what you decided and whether the money came back. Add purchases yourself, share a receipt, forward selected emails or connect Gmail with read-only access.</p>
-        <p class="availability">Currently available to invited private-beta testers.</p>
+        <p class="positioning">KEEP? — The after-shopping app.</p>
+        <h1>The shopping was the easy part.</h1>
+        <p class="lede">The things you bought. The things you&rsquo;re still deciding on. The money you&rsquo;re waiting to get back. All in one place.</p>
+        <div class="waitlist" id="waitlist" role="form" aria-label="Private beta waitlist" data-endpoint="https://api.keepapp.io/v1/waitlist" data-notice-version="waitlist-effective-2026-11-09">
+          <label for="waitlist-email">Email address</label>
+          <div class="waitlist-row"><input id="waitlist-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254" required aria-describedby="waitlist-note waitlist-status"><button type="button">Request early access</button></div>
+          <div class="trap" aria-hidden="true"><label for="waitlist-website">Website</label><input id="waitlist-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          <p class="waitlist-note" id="waitlist-note">We&rsquo;ll use your email only to contact you about the KEEP? private beta—not for newsletters or marketing. <a href="privacy/#beta-waitlist">Privacy Policy</a>.</p>
+          <p class="waitlist-status" id="waitlist-status" role="status" aria-live="polite"></p>
+          <noscript><p class="waitlist-status error">JavaScript is required to join safely. No email has been submitted.</p></noscript>
+        </div>
       </div>
-      <div class="device" aria-label="Illustration of the KEEP? home screen showing returnable purchases and upcoming deadlines" role="img">
-        <p class="mark">KEEP?</p><p class="amount">$438</p><p class="returnable">returnable</p><p class="count">3 items still deciding</p>
-        <p class="label">RETURN SOON</p>
-        <div class="row"><div class="swatch"></div><div class="item"><b>Brown Bag</b><span>Example store</span></div><div class="pill soon">3 days</div></div>
-        <div class="row"><div class="swatch"></div><div class="item"><b>Black Dress</b><span>Example store</span></div><div class="pill">8 days</div></div>
-        <div class="btn">Add Purchase</div>
-      </div>
+      <img class="shot" src="assets/keep-real-to-return.png" alt="KEEP? Home showing $443 returnable across three items, a $148 estimated refund, and one return window needing attention" width="264" height="574">
     </div>
   </div>
-  <section><div class="wrap">
-    <h2 class="section-head">One place for the whole decision</h2>
-    <div class="steps">
-      <div class="step"><span class="n">01</span><h3>Add what you bought</h3><p>Enter it manually, scan a paper receipt on-device, import screenshots, share receipt content, forward selected emails or connect Gmail.</p></div>
-      <div class="step"><span class="n">02</span><h3>Decide in time</h3><p>See the return date and choose Keep or Return. Suggested dates can be incomplete, so confirm them against the retailer&rsquo;s policy.</p></div>
-      <div class="step"><span class="n">03</span><h3>Follow the money</h3><p>Track the handoff and expected refund separately. KEEP? never treats a label or QR code as proof that money arrived.</p></div>
+  <section class="showcase" aria-labelledby="showcase-title"><div class="wrap">
+    <h2 class="section-head" id="showcase-title">A closer look at KEEP?</h2>
+    <div class="showcase-track" tabindex="0" aria-label="Product screenshots; scroll horizontally on smaller screens">
+      <figure class="showcase-card"><img loading="lazy" decoding="async" src="assets/showcase/home.png" alt="KEEP? Home showing $443 returnable across three items, a $148 estimated refund, and one return window needing attention" width="1206" height="2622"><figcaption><strong>Home — See what needs your attention.</strong><span>Your purchases, returnable items, and expected refunds at a glance.</span></figcaption></figure>
+      <figure class="showcase-card"><img loading="lazy" decoding="async" src="assets/showcase/boards.png" alt="KEEP? Boards showing Everyday, Event Dressing, and Fall Wardrobe boards with sanitized product images and item counts" width="1206" height="2622"><figcaption><strong>Boards — Organize what&rsquo;s staying.</strong><span>Organize what you&rsquo;re keeping and still deciding on into boards that make sense to you.</span></figcaption></figure>
+      <figure class="showcase-card"><img loading="lazy" decoding="async" src="assets/showcase/item-detail.png" alt="KEEP? lifecycle detail showing an estimated return deadline, a shipped return, and an estimated $148 refund expected November 17" width="1206" height="2622"><figcaption><strong>Item Detail — Decide with the deadline in view.</strong><span>See return deadlines and decide what stays or goes. Estimated dates are clearly labeled.</span></figcaption></figure>
+      <figure class="showcase-card"><img loading="lazy" decoding="async" src="assets/showcase/refunds.png" alt="KEEP? History showing sanitized kept, refund-pending, and refund-received purchases" width="1206" height="2622"><figcaption><strong>Refunds — Don&rsquo;t lose track of what&rsquo;s coming back.</strong><span>Follow your returns and the refunds you&rsquo;re still waiting for.</span></figcaption></figure>
+      <figure class="showcase-card"><img loading="lazy" decoding="async" src="assets/showcase/insights.png" alt="KEEP? year-to-date Insights showing $396 in refunds received, 11 kept items, and five items decided for return" width="1206" height="2622"><figcaption><strong>Insights — Know your shopping habits a little better.</strong><span>As your purchase history grows, discover patterns in what you keep, return, and get refunded.</span></figcaption></figure>
     </div>
   </div></section>
+  <section><div class="wrap">
+    <h2 class="section-head">Keep track, without keeping it all in your head.</h2>
+    <div class="steps">
+      <div class="step"><span class="n">01 — Organize</span><h3>Know what you bought.</h3><p>Your purchases together in one place, with boards to organize what you&rsquo;re keeping and still deciding on.</p></div>
+      <div class="step"><span class="n">02 — Decide</span><h3>Stay ahead of returns.</h3><p>Keep return deadlines in view and get reminders when enabled, so you&rsquo;re less likely to forget something you meant to send back.</p></div>
+      <div class="step"><span class="n">03 — Recover</span><h3>Know what&rsquo;s coming back.</h3><p>See which refunds you&rsquo;re waiting for and which still need a follow-up, instead of trying to remember whether the money arrived.</p></div>
+      <div class="step"><span class="n">04 — Learn</span><h3>See your shopping more clearly.</h3><p>As your history grows, spot patterns in what you keep and return to make more informed decisions next time.</p></div>
+    </div>
+    <p><em>Return dates may be estimated and should be confirmed with the retailer. Refund status is based on retailer information and your confirmation, not direct access to your bank account.</em></p>
+  </div></section>
   <section><div class="wrap"><div class="split">
-    <div><p class="eyebrow">Optional email connection</p><h2 class="section-head">Gmail access is read-only.</h2><p class="lede">If you connect Gmail, KEEP? looks for relevant purchase and lifecycle messages so it can organize orders, deliveries, returns and refunds. It cannot send, delete, modify or mark messages as read.</p><p><a href="privacy/#gmail">How Gmail data is handled</a></p></div>
+    <div><p class="eyebrow">Optional email connection</p><h2 class="section-head">Your inbox stays yours.</h2><p><strong>Gmail access is optional and read-only.</strong></p><p class="lede">If you connect Gmail, KEEP? looks for relevant purchase, delivery, return, and refund messages to help organize your shopping. It can&rsquo;t send, delete, edit, or mark your emails as read.</p><p><a href="privacy/#gmail">How Gmail data is handled</a></p></div>
     <div class="fact-card" aria-label="Gmail permissions summary"><p><strong>Can read relevant messages</strong><span>Only after you connect Gmail</span></p><p><strong>Cannot change your mailbox</strong><span>No send, delete, edit or mark-as-read permission</span></p><p><strong>You can disconnect</strong><span>Access can be removed from KEEP? and your Google Account</span></p></div>
   </div></div></section>
-  <section><div class="wrap col"><p class="eyebrow">Designed with restraint</p><h2 class="section-head">Your saved purchase list lives on your iPhone.</h2><p>Network features use KEEP?&rsquo;s service only when needed for receipt or email processing, inbox delivery, first-party activation measurement and optional notifications. The public website uses no analytics, advertising trackers, cookies or third-party scripts.</p><p><a href="privacy/">Read the Privacy Policy</a></p></div></section>
-  <section class="close"><div class="wrap"><h2>Built to help you remember—not to make the decision for you.</h2><p>KEEP? is an organizational aid. Always confirm retailer deadlines, eligibility, shipment status and refunds with the retailer, carrier and your account records.</p></div></section>
+  <section><div class="wrap col"><p class="eyebrow">Designed with restraint</p><h2 class="section-head">Your purchases stay on your iPhone.</h2><p>Your saved purchase list lives on your iPhone. Some features use KEEP?&rsquo;s service to process receipts and emails, deliver information, measure first-party activation, and support optional notifications. The public website uses no analytics, advertising trackers, cookies, or third-party scripts.</p><p><a href="privacy/">Read the Privacy Policy</a></p></div></section>
+  <section class="close"><div class="wrap"><h2>You shop. KEEP? keeps track.</h2><p><strong>One less thing on your mind.</strong></p><p>KEEP? is an organizational aid. Always confirm retailer deadlines, eligibility, shipment status and refunds with the retailer, carrier and your account records.</p></div></section>
 </main>
 <footer class="site-foot"><div class="wrap foot-row"><a href="privacy/">Privacy</a><a href="terms/">Terms</a><a href="support/">Support</a><span class="spacer"></span><span>&copy; 2026 ZENDELI CO.</span></div></footer>
+<script src="assets/waitlist.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,20 @@
+{
+  "name": "KEEP?",
+  "short_name": "KEEP?",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#F7F3ED",
+  "theme_color": "#3F2B25",
+  "icons": [
+    {
+      "src": "assets/icon-192-v2.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512-v2.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

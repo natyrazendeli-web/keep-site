@@ -4,9 +4,9 @@
    and New York faces the app uses, and it costs zero requests. */
 
 :root {
-  --paper:      #FAF8F5;
+  --paper:      #F7F3ED;
   --surface:    #FFFFFF;
-  --ink:        #1A1714;
+  --ink:        #3F2B25;
   --ink-2:      #756D65;
   --hairline:   #E9E4DD;
   --clay:       #A3533B;
@@ -117,6 +117,12 @@ p:last-child { margin-bottom: 0; }
   margin: 0 0 20px;
 }
 
+.positioning {
+  font-family: var(--display);
+  font-size: clamp(20px, 2.6vw, 26px);
+  margin-bottom: 14px;
+}
+
 /* ---------- header ---------- */
 
 .site-head {
@@ -182,11 +188,78 @@ p:last-child { margin-bottom: 0; }
 }
 
 .hero h1 { margin-bottom: 22px; }
-.hero .lede { margin-bottom: 30px; }
+.hero .lede {
+  font-size: clamp(18px, 2vw, 19px);
+  line-height: 1.55;
+  max-width: 43ch;
+  margin-bottom: 30px;
+}
+
+/* ---------- private beta waitlist ---------- */
+
+.waitlist { max-width: 540px; }
+.waitlist > label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+.waitlist-row { display: flex; gap: 10px; }
+.waitlist-row input {
+  min-width: 0;
+  flex: 1;
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  padding: 13px 15px;
+}
+.waitlist-row input:focus-visible { outline: 2px solid var(--clay); outline-offset: 2px; }
+.waitlist-row button {
+  border: 0;
+  border-radius: 14px;
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  padding: 13px 20px;
+}
+.waitlist-row button:hover { opacity: 0.88; }
+.waitlist-row button:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
+.waitlist-row button:disabled { cursor: wait; opacity: 0.65; }
+.waitlist-note, .waitlist-status { color: var(--ink-2); font-size: 13px; line-height: 1.45; margin-top: 10px; }
+.waitlist-status:empty { display: none; }
+.waitlist-status.success { color: var(--sage); font-weight: 600; }
+.waitlist-status.error { color: var(--urgent); font-weight: 600; }
+.trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
 /* ---------- sections ---------- */
 
 section { padding-bottom: var(--gap); }
+
+.showcase { padding-top: 8px; }
+.showcase-track {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+}
+.showcase-card { margin: 0; min-width: 0; }
+.showcase-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--hairline);
+  border-radius: 24px;
+  box-shadow: 0 16px 34px var(--shadow);
+}
+.showcase-card figcaption { padding-top: 16px; }
+.showcase-card strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 7px;
+}
+.showcase-card span { color: var(--ink-2); font-size: 14px; line-height: 1.5; }
+.showcase-track:focus-visible { outline: 2px solid var(--clay); outline-offset: 8px; }
 
 .pull {
   font-family: var(--display);
@@ -277,127 +350,23 @@ section { padding-bottom: var(--gap); }
 .site-foot a:hover { color: var(--clay); }
 .foot-row .spacer { flex: 1; }
 
-/* ---------- device mock ----------
-   A rendering of the real home screen, built from the same tokens as the app.
-   Replace with a real screenshot when you have one — see docs/README.md. */
+/* ---------- verified product capture ---------- */
 
-.device {
+.shot {
   width: 264px;
+  height: auto;
   flex: none;
   border: 9px solid #1A1714;
   border-radius: 46px;
-  background: var(--paper);
-  padding: 18px 15px 22px;
   box-shadow: 0 26px 60px rgba(26, 23, 20, 0.16);
-  overflow: hidden;
-  user-select: none;
+  display: block;
 }
 
 @media (prefers-color-scheme: dark) {
-  .device {
+  .shot {
     border-color: #3A3633;
     box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
   }
-}
-
-.device .mark {
-  font-family: var(--display);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  margin: 0 0 26px;
-}
-
-.device .amount {
-  font-family: var(--display);
-  font-size: 52px;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-
-.device .returnable {
-  font-family: var(--display);
-  font-size: 19px;
-  color: var(--ink-2);
-  margin: 2px 0 0;
-}
-
-.device .count {
-  font-size: 11px;
-  color: var(--ink-2);
-  margin: 10px 0 26px;
-}
-
-.device .label {
-  font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  color: var(--ink-2);
-  margin: 0 0 10px;
-}
-
-.device .row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--surface);
-  border: 1px solid var(--hairline);
-  border-radius: 15px;
-  padding: 12px;
-  margin-bottom: 9px;
-}
-
-.device .swatch {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: var(--hairline);
-  flex: none;
-}
-
-.device .item { flex: 1; min-width: 0; }
-
-.device .item b {
-  display: block;
-  font-family: var(--display);
-  font-size: 15px;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.device .item span {
-  font-size: 10.5px;
-  color: var(--ink-2);
-}
-
-.device .pill {
-  font-size: 9.5px;
-  font-weight: 500;
-  padding: 4px 8px;
-  border-radius: 999px;
-  flex: none;
-  color: var(--clay);
-  background: var(--clay-soft);
-}
-
-.device .pill.soon {
-  color: var(--urgent);
-  background: var(--urgent-soft);
-}
-
-.device .btn {
-  margin-top: 20px;
-  background: var(--ink);
-  color: var(--paper);
-  text-align: center;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 12px;
-  border-radius: 12px;
 }
 
 /* ---------- lock screen notification mock ---------- */
@@ -494,11 +463,26 @@ section { padding-bottom: var(--gap); }
 
   .hero { padding-top: 8px; }
 
-  .device, .lock { margin-top: 8px; }
+  .shot, .lock { margin-top: 8px; }
+
+  .showcase-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 2px 22px 20px;
+    margin-inline: -22px;
+    scroll-padding-inline: 22px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+  }
+  .showcase-card { flex: 0 0 min(76vw, 286px); scroll-snap-align: start; }
 
   .step { padding-right: 0; }
   .nav-row { align-items: flex-start; }
   .nav-row nav { gap: 8px 14px; }
+  .waitlist-row { align-items: stretch; flex-direction: column; }
+  .waitlist-row button { width: 100%; }
+  .waitlist-note { font-size: 14px; line-height: 1.5; }
 }
 
 @media (prefers-reduced-motion: reduce) {
